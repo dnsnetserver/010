@@ -3,23 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Options Trading Dashboard</title>
+  <title>Matrix Options AI Dashboard</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <div class="dashboard">
     <header>
-      <h1>🧠 Options AI Dashboard</h1>
-      <div class="ai-btn" onclick="toggleAssistant()">AI Assistant</div>
+      <h1><i data-lucide="activity"></i> Options Matrix</h1>
+      <div class="ai-btn" onclick="toggleAssistant()"><i data-lucide="bot"></i> AI Assistant</div>
     </header>
 
-    <section class="metrics">
-      <div class="card">IV Rank<br><span id="iv-rank">72%</span></div>
-      <div class="card">Volume<br><span id="volume">1.2M</span></div>
-      <div class="card">Open Interest<br><span id="oi">350K</span></div>
-      <div class="card">Delta<br><span id="delta">0.58</span></div>
-      <div class="card">Theta<br><span id="theta">-0.12</span></div>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search symbols (TSLA, TQQQ, SOXL...)" />
+      <button onclick="addSymbol()"><i data-lucide="plus-circle"></i> Add</button>
+    </div>
+
+    <section class="shortlist" id="shortlist">
+      <!-- Dynamic shortlist of selected tickers -->
+    </section>
+
+    <section class="metrics" id="metrics">
+      <!-- Metrics will be generated here dynamically -->
     </section>
 
     <section class="charts">
@@ -27,32 +33,28 @@
     </section>
 
     <section class="table-section">
-      <h2>Top Liquid Growth Stocks & Leveraged ETFs</h2>
+      <h2><i data-lucide="list"></i> Strategy Suggestions</h2>
       <table>
         <thead>
           <tr>
             <th>Symbol</th>
-            <th>Name</th>
             <th>IV%</th>
             <th>Price</th>
-            <th>Open Int.</th>
-            <th>Strategy</th>
+            <th>OI</th>
+            <th>Suggested Strategy</th>
           </tr>
         </thead>
-        <tbody id="stock-table-body">
-          <!-- Dynamic content -->
-        </tbody>
+        <tbody id="strategy-table-body"></tbody>
       </table>
     </section>
 
     <aside id="assistant" class="assistant hidden">
-      <h3>AI Strategy Assistant</h3>
-      <p>Fetching optimal weekly strategy...</p>
-      <div id="ai-output">
-        <!-- AI output goes here -->
-      </div>
+      <h3><i data-lucide="brain-cog"></i> AI Assistant</h3>
+      <p>Analyzing shortlist...</p>
+      <div id="ai-output"></div>
     </aside>
   </div>
   <script src="dashboard.js"></script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
