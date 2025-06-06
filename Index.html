@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Options Trading Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      <h1>🧠 Options AI Dashboard</h1>
+      <div class="ai-btn" onclick="toggleAssistant()">AI Assistant</div>
+    </header>
+
+    <section class="metrics">
+      <div class="card">IV Rank<br><span id="iv-rank">72%</span></div>
+      <div class="card">Volume<br><span id="volume">1.2M</span></div>
+      <div class="card">Open Interest<br><span id="oi">350K</span></div>
+      <div class="card">Delta<br><span id="delta">0.58</span></div>
+      <div class="card">Theta<br><span id="theta">-0.12</span></div>
+    </section>
+
+    <section class="charts">
+      <canvas id="volatilityChart"></canvas>
+    </section>
+
+    <section class="table-section">
+      <h2>Top Liquid Growth Stocks & Leveraged ETFs</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>IV%</th>
+            <th>Price</th>
+            <th>Open Int.</th>
+            <th>Strategy</th>
+          </tr>
+        </thead>
+        <tbody id="stock-table-body">
+          <!-- Dynamic content -->
+        </tbody>
+      </table>
+    </section>
+
+    <aside id="assistant" class="assistant hidden">
+      <h3>AI Strategy Assistant</h3>
+      <p>Fetching optimal weekly strategy...</p>
+      <div id="ai-output">
+        <!-- AI output goes here -->
+      </div>
+    </aside>
+  </div>
+  <script src="dashboard.js"></script>
+</body>
+</html>
